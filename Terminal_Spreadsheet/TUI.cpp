@@ -1,6 +1,6 @@
 #include "TUI.h"
 
-TUI::TUI()
+TUI::TUI(CComPtr<Excel::_Application> excelApp): excelApp(excelApp)
 {
 	InitMenuScreen();
 	DisplayMenuInfo();
@@ -646,6 +646,12 @@ void TUI::ProcessKeyboardInput(const KEY_EVENT_RECORD& keyEvent)
 
 				break;
 			}
+
+			case 5: //CTRL+E
+			{
+				ExportDataToExcel();
+				break;
+			}
 			}
 		}
 	}
@@ -727,7 +733,7 @@ void TUI::ProcessWindowSizeChange(const COORD& currentScreenSize, const COORD& n
 
 void TUI::DisplayMenuInfo()
 {
-	Console::Write("New Sheet (CTRL+N) | Open File (CTRL+O) | Save File (CTRL+S)");
+	Console::Write("New Sheet (CTRL+N) | Open File (CTRL+O) | Save File (CTRL+S) | Export to Excel (CTRL+E)");
 	Console::MoveCursor(Position{ 0, 2 });
 }
 
@@ -745,4 +751,18 @@ std::string TUI::ProvideFilePath()
 	Console::Write("File Path: ");
 	Console::MoveCursor(Position{ 0, currCursor.Y() + 1 });
 	return ReadLimitedInput();
+}
+
+void TUI::ExportDataToExcel()
+{
+	auto values = sheet.Values();
+	for (const auto& pair : values)
+	{
+		auto cellPtr = std::get<1>(pair);
+		std::string title = cellPtr->Title();
+		auto formCellPtr = std::dynamic_pointer_cast<FormulaCell>(cellPtr);
+
+		auto cell = excelApp->GetRange(title.c_str());
+		cell->Value2 = formCellPtr ? formCellPtr->Expression().c_str() : cellPtr->ValueString().c_str();
+	}
 }
