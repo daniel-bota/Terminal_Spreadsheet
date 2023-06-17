@@ -1,21 +1,21 @@
 #include "TextCell.h"
 
-TextCell::TextCell(Address address, Sheet* sheet) : Cell(address, sheet)
+TextCell::TextCell(const Address& address, Sheet* sheet) : Cell(address, sheet)
 {
 	value = std::string{ "" };
 }
 
-TextCell::TextCell(Address address, Sheet* sheet, std::string newValue) : Cell(address, sheet)
+TextCell::TextCell(const Address& address, Sheet* sheet, const std::string& newValue) : Cell(address, sheet)
 {
 	value = newValue;
 }
 
-TextCell::TextCell(Address address, int width, int height, Sheet* sheet) : Cell(address, width, height, sheet)
+TextCell::TextCell(const Address& address, int width, int height, Sheet* sheet) : Cell(address, width, height, sheet)
 {
 	value = std::string{ "" };
 }
 
-TextCell::TextCell(Address address, int width, int height, Sheet* sheet, std::string newValue) : Cell(address, width, height, sheet)
+TextCell::TextCell(const Address& address, int width, int height, Sheet* sheet, const std::string& newValue) : Cell(address, width, height, sheet)
 {
 	value = newValue;
 }
