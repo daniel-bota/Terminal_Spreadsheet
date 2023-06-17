@@ -1,14 +1,14 @@
 #include "RowHeader.h"
 #include "Sheet.h"
 
-RowHeader::RowHeader(int index) : index(index)
+RowHeader::RowHeader(Sheet* sheet, int index) : Cell(sheet), index(index)
 {
 	address = Address{ -1, index };
 	title = GenerateRowTitle(index);
 	value = title;
 }
 
-RowHeader::RowHeader(int index, int width, int height) : RowHeader(index)
+RowHeader::RowHeader(Sheet* sheet, int index, int width, int height) : RowHeader(sheet, index)
 {
 	this->width = width;
 	this->height = height;

@@ -1,16 +1,16 @@
 #include "NumericCell.h"
 
-NumericCell::NumericCell(Address address, Sheet* sheet) : Cell(address, sheet)
+NumericCell::NumericCell(const Address& address, Sheet* sheet) : Cell(address, sheet)
 {
     value = static_cast<double>(0);
 }
 
-NumericCell::NumericCell(Address address, Sheet* sheet, double newValue) : Cell(address, sheet)
+NumericCell::NumericCell(const Address& address, Sheet* sheet, double newValue) : Cell(address, sheet)
 {
     value = newValue;
 }
 
-NumericCell::NumericCell(Address address, int width, int height, Sheet* sheet, double newValue) : Cell (address, width, height, sheet)
+NumericCell::NumericCell(const Address& address, int width, int height, Sheet* sheet, double newValue) : Cell (address, width, height, sheet)
 {
     value = newValue;
 }

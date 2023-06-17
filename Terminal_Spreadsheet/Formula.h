@@ -15,10 +15,10 @@ class Formula
 {
 public:
 	Formula() = default;
-	Formula(Sheet* sheet, Address address, std::string expression);
+	Formula(Sheet* sheet, const Address& address, const std::string& expression);
 	void Parse(bool removeDependencies = false);
 	bool Valid() const { return valid; }
-	std::variant<std::monostate, std::string, double> Value() const;
+	const std::variant<std::monostate, std::string, double>& Value() const;
 	const std::string& Expression() const { return expression; }
 	const std::string& ErrorMessage() const { return errorMessage; }
 private:
@@ -29,9 +29,11 @@ private:
 	bool valid = true;
 	std::string errorMessage{ "" };
 
-	std::variant<std::monostate, std::string, double> Compute(std::string input, bool removeDependencies = false);
-	std::variant<std::monostate, std::string, double> Compute(std::string formula, std::vector<std::string>& params, bool removeDependencies = false);
-	std::variant<std::monostate, std::string, double> ComputeReference(std::string reference, bool removeDependencies);
+	std::variant<std::monostate, std::string, double> Compute(const std::string& term, bool removeDependencies = false);
+	std::vector<std::string> SplitParameters(const std::string& term);
+	std::string ConsumeFirstParameter(std::string& term);
+	std::variant<std::monostate, std::string, double> Compute(const std::string& formula, std::vector<std::string>& params, bool removeDependencies = false);
+	std::variant<std::monostate, std::string, double> ComputeReference(const std::string& reference, bool removeDependencies);
 	std::variant<std::monostate, std::string, double> ComputeSum(const std::vector<std::string>& params, bool removeDependencies = false);
 	std::variant<std::monostate, std::string, double> ComputeCount(const std::vector<std::string>& params, bool removeDependencies = false);
 	std::variant<std::monostate, std::string, double> ComputeAverage(const std::vector<std::string>& params, bool removeDependencies = false);
@@ -41,13 +43,14 @@ private:
 	std::variant<std::monostate, std::string, double> ComputeTrim(const std::vector<std::string>& params, bool removeDependencies);
 	std::variant<std::monostate, std::string, double> ComputeConcat(const std::vector<std::string>& params, bool removeDependencies);
 	std::vector<std::variant<std::monostate, std::string, double>> ComputeParamValues(const std::vector<std::string>& params, bool removeDependencies = false);
-	std::variant<std::monostate, std::string, double> Invalid(std::string message);
-	std::variant<std::monostate, std::string, double> Invalid(std::string message, std::string element);
+	std::variant<std::monostate, std::string, double> Invalid(const std::string& message);
+	std::variant<std::monostate, std::string, double> Invalid(const std::string& message, const std::string& element);
 
-	bool IsString(std::string input);
-	bool IsNumber(std::string input, double& output);
-	bool IsReference(std::string input);
-	bool IsRefRange(std::string input, std::vector<std::string>& output);
+	bool IsString(const std::string& input);
+	bool IsNumber(const std::string& input, double& output);
+	bool IsReference(const std::string& input);
+	bool IsRefRange(const std::string& input, std::vector<std::string>& output);
+	bool IsRefRange(const std::string& input);
 	bool CircularDependency(const Address& currentAddress, const Address& referencedAddress);
 };
 

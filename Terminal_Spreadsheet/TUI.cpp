@@ -11,7 +11,7 @@ TUI::TUI()
 	UserInput();
 }
 
-void TUI::InitMenuScreen(Area newScreenSize)
+void TUI::InitMenuScreen(const Area& newScreenSize)
 {
 	HANDLE hMenu = CreateConsoleScreenBuffer(
 		GENERIC_READ | GENERIC_WRITE,
@@ -35,7 +35,7 @@ void TUI::InitMenuScreen(Area newScreenSize)
 	ChangeScreenSize(newScreenSize.X(), newScreenSize.Y());
 }
 
-void TUI::InitSheetScreen(Area newScreenSize)
+void TUI::InitSheetScreen(const Area& newScreenSize)
 {
 	HANDLE hSheet = CreateConsoleScreenBuffer(
 		GENERIC_READ | GENERIC_WRITE,
@@ -165,7 +165,7 @@ void TUI::DrawCells(const std::vector<std::shared_ptr<Cell>>& cells)
 	}
 }
 
-void TUI::HighlightCell(Position position, const WORD& textAttr)
+void TUI::HighlightCell(const Position& position, const WORD& textAttr)
 {
 	Address address = sheet.PositionToAddress(position);
 	Address bufferAddress = sheet.AddressToBufferAddress(address);
@@ -221,7 +221,7 @@ void TUI::UnhighlightCurrent()
 	HighlightCell(Console::CurrentCursor(), F_DARKGRAY);
 }
 
-void TUI::Highlight(Direction direction, int distance)
+void TUI::Highlight(const Direction& direction, int distance)
 {
 	Address address = sheet.PositionToAddress(Console::CurrentCursor());
 
@@ -276,7 +276,7 @@ void TUI::Highlight(Direction direction, int distance)
 	HighlightCurrent();
 }
 
-void TUI::ScrollTable(Direction direction)
+void TUI::ScrollTable(const Direction& direction)
 {
 	auto initCursor = Console::CurrentCursor();
 
@@ -319,7 +319,7 @@ void TUI::ScrollTable(Direction direction)
 	Console::MoveCursor(initCursor);
 }
 
-std::string TUI::ReadLimitedInput(std::string currInput)
+std::string TUI::ReadLimitedInput(const std::string& currInput)
 {
 	std::string input = currInput;
 	/*DWORD numRead;
@@ -333,7 +333,7 @@ std::string TUI::ReadLimitedInput(std::string currInput)
 	DWORD numRead;
 
 	bool active = true;
-	auto currentIndex = static_cast<int>(input.size());
+	auto currentIndex = input.size();
 
 	while (active)
 	{
@@ -475,7 +475,7 @@ void TUI::UserInput()
 	}
 }
 
-void TUI::ProcessKeyboardInput(KEY_EVENT_RECORD keyEvent)
+void TUI::ProcessKeyboardInput(const KEY_EVENT_RECORD& keyEvent)
 {
 	if (keyEvent.bKeyDown)
 	{
@@ -651,14 +651,14 @@ void TUI::ProcessKeyboardInput(KEY_EVENT_RECORD keyEvent)
 	}
 }
 
-void TUI::AddContent(Address address, std::string currContent)
+void TUI::AddContent(const Address& address, const std::string& currContent)
 {
 	std::string input = ReadLimitedInput(currContent);
 	auto cellsToRedraw = sheet.AddCell(address, input);
 	DrawCells(cellsToRedraw);
 }
 
-void TUI::ProcessMouseInput(MOUSE_EVENT_RECORD mouseEvent)
+void TUI::ProcessMouseInput(const MOUSE_EVENT_RECORD& mouseEvent)
 {
 	if (mouseEvent.dwEventFlags & MOUSE_WHEELED)
 	{

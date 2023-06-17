@@ -132,7 +132,7 @@ namespace SheetFacts
 		sheet.AddCell(Address{ 2, 2 }, "=sum(B2)");
 
 		std::string output = sheet.Serialize().dump();
-		std::string expected = "{\"1,1\":\"25.000000\",\"100,2\":\"someText\",\"2,2\":\"=sum(B2)\"}";
+		std::string expected = "{\"B2\":{\"column\":1,\"row\":1,\"value\":\"25.000000\"},\"C3\":{\"column\":2,\"row\":2,\"value\":\"=sum(B2)\"},\"CW3\":{\"column\":100,\"row\":2,\"value\":\"someText\"}}";
 
 		EXPECT_EQ(expected, output);
 	}

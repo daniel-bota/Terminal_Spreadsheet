@@ -2,12 +2,12 @@
 #include "Sheet.h"
 #include <format>
 
-Cell::Cell(Address address, Sheet* sheet) : address(address), sheet(sheet)
+Cell::Cell(const Address& address, Sheet* sheet) : address(address), sheet(sheet)
 {
 	GenerateTitle(GenerateColTitle(address.Col()), GenerateRowTitle(address.Row()));
 }
 
-Cell::Cell(Address address, int width, int height, Sheet* sheet) : address(address), width(width), height(height), sheet(sheet)
+Cell::Cell(const Address& address, int width, int height, Sheet* sheet) : address(address), width(width), height(height), sheet(sheet)
 {
 	GenerateTitle(GenerateColTitle(address.Col()), GenerateRowTitle(address.Row()));
 }
@@ -17,7 +17,7 @@ void Cell::SetReferencingCells(const std::vector<Address>& newReferencing)
 	referencing = newReferencing;
 }
 
-void Cell::AddReferencingCell(Address address)
+void Cell::AddReferencingCell(const Address& address)
 {
 	auto existing = std::ranges::find(referencing, address);
 	if (existing != referencing.end())
@@ -27,7 +27,7 @@ void Cell::AddReferencingCell(Address address)
 	referencing.push_back(address);
 }
 
-void Cell::RemoveReferencingCell(Address address)
+void Cell::RemoveReferencingCell(const Address& address)
 {
 	auto existing = std::ranges::find(referencing, address);
 	if (existing == referencing.end())
@@ -37,7 +37,7 @@ void Cell::RemoveReferencingCell(Address address)
 	referencing.erase(existing);
 }
 
-void Cell::NotifyReferencingCells(Address notificationSource)
+void Cell::NotifyReferencingCells(const Address& notificationSource)
 {
 	for (const auto& address : referencing)
 	{
@@ -46,7 +46,7 @@ void Cell::NotifyReferencingCells(Address notificationSource)
 	}
 }
 
-void Cell::GenerateTitle(std::string colTitle, std::string rowTitle)
+void Cell::GenerateTitle(const std::string& colTitle, const std::string& rowTitle)
 {
 	title = std::format("{}{}", colTitle, rowTitle);
 }

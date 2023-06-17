@@ -37,7 +37,7 @@ public:
 	void Initialize(const std::map<Address, std::shared_ptr<Cell>>& importedValues = {});
 
 	void AddCell(std::shared_ptr<Cell> cell);
-	std::vector<std::shared_ptr<Cell>> AddCell(Address address, std::string input);
+	std::vector<std::shared_ptr<Cell>> AddCell(const Address& address, const std::string& input);
 
 	int DefaultCellWidth() { return defCellW; }
 	int DefaultCellHeight() { return defCellH; }
@@ -49,14 +49,14 @@ public:
 	COORD GetScrollDestination(const Direction& scrollDirection, const SMALL_RECT& scrollArea);
 	void ScrollBuffer(const Direction& direction);
 
-	Position BufferAddressToPosition(Address buffAddress);
-	Address BufferAddressToAddress(Address buffAddress);
-	Address AddressToBufferAddress(Address address);
-	Position AddressToPosition(Address address);
-	Address PositionToBufferAddress(Position position);
-	Address PositionToAddress(Position position);
-	Address CellTitleToAddress(std::string title);
-	int ColTitleToIndex(std::string colTitle);
+	Position BufferAddressToPosition(const Address& buffAddress);
+	Address BufferAddressToAddress(const Address& buffAddress);
+	Address AddressToBufferAddress(const Address& address);
+	Position AddressToPosition(const Address& address);
+	Address PositionToBufferAddress(const Position& position);
+	Address PositionToAddress(const Position& position);
+	Address CellTitleToAddress(const std::string& title);
+	int ColTitleToIndex(const std::string& colTitle);
 
 	nlohmann::json Serialize();
 	bool Deserialize(const nlohmann::json& source);
@@ -64,7 +64,7 @@ private:
 	int defCellH{ 0 }, defCellW{ 0 }, defRowHeaderW{ 0 }, maxValueLength{ 0 }, displayH{ 0 };
 	std::vector<std::shared_ptr<Cell>> colHeadersBuff{};
 	std::vector<std::shared_ptr<Cell>> rowHeadersBuff{};
-	SMALL_RECT tableArea;
+	SMALL_RECT tableArea{ 0, 0 };
 	std::map<Address, std::shared_ptr<Cell>> values{};
 
 	std::map<Address, std::vector<Address>> referencing{};

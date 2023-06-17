@@ -10,19 +10,19 @@ namespace HeaderFacts
 
 	TEST(ColHeader, HasValidSetterAndGetter)
 	{
-		ColHeader col(3);
+		ColHeader col(nullptr, 3);
 		EXPECT_EQ(3, col.Index());
 	}
 
 	TEST(ColHeader, HasValidTitleGenerator)
 	{
-		ColHeader col(26);
+		ColHeader col(nullptr, 26);
 		EXPECT_EQ("AA", col.Title());
 	}
 	
 	TEST(RowHeader, HasValidTitleGenerator)
 	{
-		RowHeader row(108);
+		RowHeader row(nullptr, 108);
 		EXPECT_EQ("109", row.Title());
 	}
 }

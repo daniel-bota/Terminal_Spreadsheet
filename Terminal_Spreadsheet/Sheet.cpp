@@ -29,7 +29,7 @@ void Sheet::InitHeaders(int numCols, int numRows)
 	GenerateHeaders(false, true, numCols, colHeadersBuff);
 }
 
-std::vector<std::shared_ptr<Cell>> Sheet::AddCell(Address address, std::string input)
+std::vector<std::shared_ptr<Cell>> Sheet::AddCell(const Address& address, const std::string& input)
 {
 	std::vector<std::shared_ptr<Cell>> output{};
 	std::shared_ptr<Cell> cellPtr = nullptr;
@@ -113,10 +113,10 @@ std::shared_ptr<Cell> Sheet::GenerateHeader(bool rowHeader, int index)
 {
 	if (rowHeader)
 	{
-		return std::make_shared<RowHeader>(index, defRowHeaderW, defCellH);
+		return std::make_shared<RowHeader>(this, index, defRowHeaderW, defCellH);
 	}
 
-	return std::make_shared<ColHeader>(index, defCellW, defCellH);
+	return std::make_shared<ColHeader>(this, index, defCellW, defCellH);
 }
 
 void Sheet::Initialize(const std::map<Address, std::shared_ptr<Cell>>& importedValues)
@@ -259,7 +259,7 @@ void Sheet::ScrollBuffer(const Direction& direction)
 	ScrollHeaders(direction, 1);
 }
 
-Position Sheet::BufferAddressToPosition(Address buffAddress)
+Position Sheet::BufferAddressToPosition(const Address& buffAddress)
 {
 	int x = buffAddress.Col() == -1 ? 0 : defRowHeaderW + buffAddress.Col() * defCellW;
 	int y = buffAddress.Row() == -1 ? displayH : displayH + (buffAddress.Row() + 1) * defCellH;
@@ -267,7 +267,7 @@ Position Sheet::BufferAddressToPosition(Address buffAddress)
 	return Position{ x, y };
 }
 
-Address Sheet::BufferAddressToAddress(Address buffAddress)
+Address Sheet::BufferAddressToAddress(const Address& buffAddress)
 {
 	int col = colHeadersBuff[buffAddress.Col()]->Index();
 	int row = rowHeadersBuff[buffAddress.Row()]->Index();
@@ -275,7 +275,7 @@ Address Sheet::BufferAddressToAddress(Address buffAddress)
 	return Address{ col, row };
 }
 
-Address Sheet::AddressToBufferAddress(Address address)
+Address Sheet::AddressToBufferAddress(const Address& address)
 {
 	auto colIndex = address.Col() == -1 ? -1 :
 		std::ranges::find_if(colHeadersBuff, [&address](const auto& col)
@@ -297,12 +297,12 @@ Address Sheet::AddressToBufferAddress(Address address)
 					return Address{ static_cast<int>(colIndex), static_cast<int>(rowIndex) };
 }
 
-Position Sheet::AddressToPosition(Address address)
+Position Sheet::AddressToPosition(const Address& address)
 {
 	return BufferAddressToPosition(AddressToBufferAddress(address));
 }
 
-Address Sheet::PositionToBufferAddress(Position position)
+Address Sheet::PositionToBufferAddress(const Position& position)
 {
 	int col = (position.X() - defRowHeaderW) / defCellW;
 	int row = (position.Y() - displayH - defCellH) / defCellH;
@@ -310,12 +310,12 @@ Address Sheet::PositionToBufferAddress(Position position)
 	return Address{ col, row };
 }
 
-Address Sheet::PositionToAddress(Position position)
+Address Sheet::PositionToAddress(const Position& position)
 {
 	return BufferAddressToAddress(PositionToBufferAddress(position));
 }
 
-Address Sheet::CellTitleToAddress(std::string title)
+Address Sheet::CellTitleToAddress(const std::string& title)
 {
 	auto firstDigitIndex = std::ranges::find_if(title, [](const char& c) { return std::isdigit(c); }) - title.begin();
 	std::string colTitle = title.substr(0, firstDigitIndex);
@@ -331,14 +331,15 @@ Address Sheet::CellTitleToAddress(std::string title)
 	return Address{ colIndex, rowIndex };
 }
 
-int Sheet::ColTitleToIndex(std::string colTitle)
+int Sheet::ColTitleToIndex(const std::string& colTitle)
 {
+	std::string input = colTitle;
 	const int base = 26;
 	int result = 0;
-	for (char c : colTitle)
+	for (char c : input)
 	{
-		colTitle.erase(colTitle.begin());
-		result += (c - 'A' + 1) * static_cast<int>(pow(base, colTitle.size()));
+		input.erase(input.begin());
+		result += (c - 'A' + 1) * static_cast<int>(pow(base, input.size()));
 	}
 
 	return result - 1;
@@ -386,7 +387,7 @@ bool Sheet::Deserialize(const nlohmann::json& source)
 
 			initializerList[newAddress] = value;
 		}
-		catch (const nlohmann::json::out_of_range& ex)
+		catch (const nlohmann::json::out_of_range&)
 		{
 			return false;
 		}	

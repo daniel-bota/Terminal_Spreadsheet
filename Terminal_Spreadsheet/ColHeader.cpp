@@ -1,14 +1,14 @@
 #include "ColHeader.h"
 #include "Sheet.h"
 
-ColHeader::ColHeader(int index): index(index)
+ColHeader::ColHeader(Sheet* sheet, int index): Cell(sheet), index(index)
 {
 	address = Address{ index, -1 };
 	title = GenerateColTitle(index);
 	value = title;
 }
 
-ColHeader::ColHeader(int index, int width, int height) : ColHeader(index)
+ColHeader::ColHeader(Sheet* sheet, int index, int width, int height) : ColHeader(sheet, index)
 {
 	this->width = width;
 	this->height = height;

@@ -5,19 +5,19 @@ namespace CellFacts
 {
 	TEST(ColHeader, GeneratesColTitle)
 	{
-		ColHeader col(77);
+		ColHeader col(nullptr, 77);
 		EXPECT_EQ("BZ", col.Title());
 	}
 
 	TEST(ColHeader, ReturnsValueToDrawByCellWidth)
 	{
-		ColHeader col(727, 5, 1);
+		ColHeader col(nullptr, 727, 5, 1);
 		EXPECT_EQ(" AAZ ", col.ValueToDraw());
 	}
 
 	TEST(RowHeader, GeneratesRowTitle)
 	{
-		RowHeader row(7);
+		RowHeader row(nullptr, 7);
 		EXPECT_EQ("8", row.Title());
 	}
 }
