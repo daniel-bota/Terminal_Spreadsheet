@@ -1,5 +1,16 @@
 #include "TUI.h"
 
+TUI::TUI()
+{
+	InitMenuScreen();
+	DisplayMenuInfo();
+
+	InitSheetScreen();
+
+	InitSheet();
+	UserInput();
+}
+
 TUI::TUI(CComPtr<Excel::_Application> excelApp): excelApp(excelApp)
 {
 	InitMenuScreen();

@@ -24,6 +24,7 @@
 class TUI
 {
 public:
+	TUI();
 	TUI(CComPtr<Excel::_Application> excelApp);
 private:
 	const int defCellH{ 1 };
@@ -39,7 +40,7 @@ private:
 
 	Sheet sheet;
 
-	CComPtr<Excel::_Application> excelApp;
+	CComPtr<Excel::_Application> excelApp = nullptr;
 
 	Display display;
 	void InitMenuScreen(const Area& newScreenSize = Area{ -1, -1 });

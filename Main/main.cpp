@@ -8,16 +8,18 @@
 
 int main()
 {
-	auto hr = CoInitialize(NULL);
+    TUI tui;
 
-    CComPtr<IDispatch> excel;
-    hr = excel.CoCreateInstance(L"Excel.Application", NULL, CLSCTX_LOCAL_SERVER);
-    
-    CComQIPtr<Excel::_Application> pApp(excel);
-    
-    pApp->Visible[0] = true;
+    //auto hr = CoInitialize(NULL);
 
-    pApp->Workbooks->Add();
+    //CComPtr<IDispatch> excel;
+    //hr = excel.CoCreateInstance(L"Excel.Application", NULL, CLSCTX_LOCAL_SERVER);
+    //
+    //CComQIPtr<Excel::_Application> pApp(excel);
+    //
+    //pApp->Visible[0] = true;
 
-    TUI tui(pApp);
+    //pApp->Workbooks->Add();
+
+    //TUI tui(pApp);
 }
