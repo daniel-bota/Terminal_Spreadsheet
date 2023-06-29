@@ -361,7 +361,7 @@ std::string TUI::ReadLimitedInput(const std::string& currInput)
 			auto keyEvent = inBuffer[i].Event.KeyEvent;
 			if (!keyEvent.bKeyDown)
 			{
-				break;
+				continue;
 			}
 
 			auto inputChar = keyEvent.uChar.AsciiChar;
