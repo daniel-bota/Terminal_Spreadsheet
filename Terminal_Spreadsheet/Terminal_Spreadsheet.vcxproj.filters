@@ -13,114 +13,174 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Coordinates">
+      <UniqueIdentifier>{6f5e7b14-d789-40dc-a01d-4168aaa22eca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cell">
+      <UniqueIdentifier>{255b4446-4e33-4853-a8ef-04b816fae066}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Coordinates\Source">
+      <UniqueIdentifier>{90d2afaf-aaad-4f18-8a2d-e3099492db51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Coordinates\Header">
+      <UniqueIdentifier>{993063a8-6da9-448b-9e68-7cb7b2230936}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cell\Header">
+      <UniqueIdentifier>{7b065814-dfd9-43b4-a06e-a34e64964ee5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cell\Source">
+      <UniqueIdentifier>{592b38fa-29cb-4167-9a11-166201901c99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Console">
+      <UniqueIdentifier>{a4f8de9f-8d35-44e4-9d84-8ca1b2bc1baa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Console\Header">
+      <UniqueIdentifier>{49fe3272-b91b-4646-a84e-ea5df5644cf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Console\Source">
+      <UniqueIdentifier>{b1fb44aa-2332-4616-8743-99e76b5cdc62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TUI">
+      <UniqueIdentifier>{fa5771f4-57d7-4cd2-9a73-6270a4ef9b3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TUI\Header">
+      <UniqueIdentifier>{2e4aaa45-1298-4556-a2af-83f6a90419d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TUI\Source">
+      <UniqueIdentifier>{16e24262-0f02-47b2-b69c-85d2c4faa055}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{541a393f-826d-4adb-9fa9-af45d2a65ed4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities\Header">
+      <UniqueIdentifier>{a0a9a300-a584-4ad7-9398-2f957ed81104}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities\Source">
+      <UniqueIdentifier>{2970a9e1-d22a-49b3-a95c-6d54007bac5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sheet">
+      <UniqueIdentifier>{ef5f6411-ec1e-4893-b3eb-72b0dc7af508}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sheet\Header">
+      <UniqueIdentifier>{e172cdb3-dc65-4eac-ac56-c06259a0a2ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sheet\Source">
+      <UniqueIdentifier>{48b577a9-baa2-44d8-bf63-ed5678515b2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Formula">
+      <UniqueIdentifier>{b5f7654f-f73d-48f7-8a2b-488030a04468}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Formula\Header">
+      <UniqueIdentifier>{26d78a99-c522-4b5d-a664-fd3ac509489f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Formula\Source">
+      <UniqueIdentifier>{dc59a225-3ccb-49a8-af57-d0123c60b5b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Area.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Cell.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ColHeader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Console.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Coordinates\Source</Filter>
     </ClCompile>
     <ClCompile Include="Coordinates.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Coordinates\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Display.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Cell\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Formula.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="ColHeader.cpp">
+      <Filter>Cell\Source</Filter>
     </ClCompile>
     <ClCompile Include="FormulaCell.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Misc.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Cell\Source</Filter>
     </ClCompile>
     <ClCompile Include="NumericCell.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Cell\Source</Filter>
     </ClCompile>
     <ClCompile Include="RowHeader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Screen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Sheet.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Cell\Source</Filter>
     </ClCompile>
     <ClCompile Include="TextCell.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Cell\Source</Filter>
     </ClCompile>
     <ClCompile Include="TUI.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>TUI\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Console.cpp">
+      <Filter>Console\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Display.cpp">
+      <Filter>Console\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Screen.cpp">
+      <Filter>Console\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Misc.cpp">
+      <Filter>Utilities\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Sheet.cpp">
+      <Filter>Sheet\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Formula.cpp">
+      <Filter>Formula\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Address.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Area.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Cell.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ColHeader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Color.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Console.h">
-      <Filter>Header Files</Filter>
+      <Filter>Coordinates\Header</Filter>
     </ClInclude>
     <ClInclude Include="Coordinates.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Direction.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Display.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Formula.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FormulaCell.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Misc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NumericCell.h">
-      <Filter>Header Files</Filter>
+      <Filter>Coordinates\Header</Filter>
     </ClInclude>
     <ClInclude Include="Position.h">
-      <Filter>Header Files</Filter>
+      <Filter>Coordinates\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Area.h">
+      <Filter>Coordinates\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Cell\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ColHeader.h">
+      <Filter>Cell\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="FormulaCell.h">
+      <Filter>Cell\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="NumericCell.h">
+      <Filter>Cell\Header</Filter>
     </ClInclude>
     <ClInclude Include="RowHeader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Screen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sheet.h">
-      <Filter>Header Files</Filter>
+      <Filter>Cell\Header</Filter>
     </ClInclude>
     <ClInclude Include="TextCell.h">
-      <Filter>Header Files</Filter>
+      <Filter>Cell\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Console\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>Console\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Direction.h">
+      <Filter>Console\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Display.h">
+      <Filter>Console\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Screen.h">
+      <Filter>Console\Header</Filter>
     </ClInclude>
     <ClInclude Include="TUI.h">
-      <Filter>Header Files</Filter>
+      <Filter>TUI\Header</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ClInclude Include="Misc.h">
+      <Filter>Utilities\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Sheet.h">
+      <Filter>Sheet\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Formula.h">
+      <Filter>Formula\Header</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -10,22 +10,22 @@
 #include <ole2.h>
 #include <atlbase.h>
 
-#import "C:\Program Files\Microsoft Office\Root\VFS\ProgramFilesCommonX64\Microsoft Shared\OFFICE16\MSO.DLL" \
-    rename("RGB", "MSORGB")  \
-    rename("DocumentProperties", "DocumentPropertiesXL") no_dual_interfaces
-#import "C:\Program Files\Microsoft Office\Root\VFS\ProgramFilesCommonX86\Microsoft Shared\VBA\VBA6\VBE6EXT.OLB"
-#import "C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE" \
-    exclude("IFont", "IPicture")  \
-    rename( "DialogBox", "ExcelDialogBox" ) \
-    rename( "RGB", "ExcelRGB" ) \
-    rename( "CopyFile", "ExcelCopyFile" ) \
-    rename( "ReplaceText", "ExcelReplaceText" )
+//#import "C:\Program Files\Microsoft Office\Root\VFS\ProgramFilesCommonX64\Microsoft Shared\OFFICE16\MSO.DLL" \
+//    rename("RGB", "MSORGB")  \
+//    rename("DocumentProperties", "DocumentPropertiesXL") no_dual_interfaces
+//#import "C:\Program Files\Microsoft Office\Root\VFS\ProgramFilesCommonX86\Microsoft Shared\VBA\VBA6\VBE6EXT.OLB"
+//#import "C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE" \
+//    exclude("IFont", "IPicture")  \
+//    rename( "DialogBox", "ExcelDialogBox" ) \
+//    rename( "RGB", "ExcelRGB" ) \
+//    rename( "CopyFile", "ExcelCopyFile" ) \
+//    rename( "ReplaceText", "ExcelReplaceText" )
 
 class TUI
 {
 public:
 	TUI();
-	TUI(CComPtr<Excel::_Application> excelApp);
+	//TUI(CComPtr<Excel::_Application> excelApp);
 private:
 	const int defCellH{ 1 };
 	const int defCellW{ 10 };
@@ -40,7 +40,7 @@ private:
 
 	Sheet sheet;
 
-	CComPtr<Excel::_Application> excelApp = nullptr;
+	//CComPtr<Excel::_Application> excelApp = nullptr;
 
 	Display display;
 	void InitMenuScreen(const Area& newScreenSize = Area{ -1, -1 });
@@ -73,5 +73,5 @@ private:
 	void ClearMenuLog();
 	std::string ProvideFilePath();
 
-	void ExportDataToExcel();
+	//void ExportDataToExcel();
 };

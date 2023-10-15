@@ -11,16 +11,16 @@ TUI::TUI()
 	UserInput();
 }
 
-TUI::TUI(CComPtr<Excel::_Application> excelApp): excelApp(excelApp)
-{
-	InitMenuScreen();
-	DisplayMenuInfo();
-
-	InitSheetScreen();
-
-	InitSheet();
-	UserInput();
-}
+//TUI::TUI(CComPtr<Excel::_Application> excelApp): excelApp(excelApp)
+//{
+//	InitMenuScreen();
+//	DisplayMenuInfo();
+//
+//	InitSheetScreen();
+//
+//	InitSheet();
+//	UserInput();
+//}
 
 void TUI::InitMenuScreen(const Area& newScreenSize)
 {
@@ -658,11 +658,11 @@ void TUI::ProcessKeyboardInput(const KEY_EVENT_RECORD& keyEvent)
 				break;
 			}
 
-			case 5: //CTRL+E
-			{
-				ExportDataToExcel();
-				break;
-			}
+			//case 5: //CTRL+E
+			//{
+			//	ExportDataToExcel();
+			//	break;
+			//}
 			}
 		}
 	}
@@ -764,16 +764,16 @@ std::string TUI::ProvideFilePath()
 	return ReadLimitedInput();
 }
 
-void TUI::ExportDataToExcel()
-{
-	auto values = sheet.Values();
-	for (const auto& pair : values)
-	{
-		auto cellPtr = std::get<1>(pair);
-		std::string title = cellPtr->Title();
-		auto formCellPtr = std::dynamic_pointer_cast<FormulaCell>(cellPtr);
-
-		auto cell = excelApp->GetRange(title.c_str());
-		cell->Value2 = formCellPtr ? formCellPtr->Expression().c_str() : cellPtr->ValueString().c_str();
-	}
-}
+//void TUI::ExportDataToExcel()
+//{
+//	auto values = sheet.Values();
+//	for (const auto& pair : values)
+//	{
+//		auto cellPtr = std::get<1>(pair);
+//		std::string title = cellPtr->Title();
+//		auto formCellPtr = std::dynamic_pointer_cast<FormulaCell>(cellPtr);
+//
+//		auto cell = excelApp->GetRange(title.c_str());
+//		cell->Value2 = formCellPtr ? formCellPtr->Expression().c_str() : cellPtr->ValueString().c_str();
+//	}
+//}
