@@ -59,7 +59,7 @@ std::vector<std::shared_ptr<Cell>> Sheet::AddCell(const Address& address, const 
 		Formula formula(this, address, input);
 		AddCell(std::make_shared<FormulaCell>(address, defCellW, defCellH, this, formula));
 	}	
-	else if (Misc::IsNumber(input, number))
+	else if (StringUtility::IsNumber(input, number))
 	{
 		AddCell(std::make_shared<NumericCell>(address, defCellW, defCellH, this, number));
 	}

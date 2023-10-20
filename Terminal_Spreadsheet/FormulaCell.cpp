@@ -28,12 +28,12 @@ std::string FormulaCell::ValueToDraw() const
 {
     if (!Valid())
     {
-        return Misc::ValueToDraw(false, true, formula.ErrorMessage(), width);
+        return StringUtility::ValueToDraw(false, true, formula.ErrorMessage(), width);
     }
 
     return std::holds_alternative<std::string>(Value()) ?
-        Misc::ValueToDraw(false, true, std::get<std::string>(Value()), width) : 
-        Misc::ValueToDraw(false, false, std::to_string(std::get<double>(Value())), width);
+        StringUtility::ValueToDraw(false, true, std::get<std::string>(Value()), width) : 
+        StringUtility::ValueToDraw(false, false, std::to_string(std::get<double>(Value())), width);
 }
 
 const std::string& FormulaCell::Expression() const

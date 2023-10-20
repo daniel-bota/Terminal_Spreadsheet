@@ -27,5 +27,5 @@ std::string TextCell::ValueString() const
 
 std::string TextCell::ValueToDraw() const
 {
-	return Misc::ValueToDraw(false, true, std::get<std::string>(value), width);
+	return StringUtility::ValueToDraw(false, true, std::get<std::string>(value), width);
 }

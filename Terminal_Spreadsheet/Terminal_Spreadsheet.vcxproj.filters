@@ -114,7 +114,7 @@
     <ClCompile Include="Screen.cpp">
       <Filter>Console\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Misc.cpp">
+    <ClCompile Include="StringUtility.cpp">
       <Filter>Utilities\Source</Filter>
     </ClCompile>
     <ClCompile Include="Sheet.cpp">
@@ -173,7 +173,7 @@
     <ClInclude Include="TUI.h">
       <Filter>TUI\Header</Filter>
     </ClInclude>
-    <ClInclude Include="Misc.h">
+    <ClInclude Include="StringUtility.h">
       <Filter>Utilities\Header</Filter>
     </ClInclude>
     <ClInclude Include="Sheet.h">

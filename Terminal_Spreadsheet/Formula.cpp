@@ -13,7 +13,7 @@ void Formula::Parse(bool removeDependencies)
 	errorMessage = "";
 	std::string formula = expression;
 	formula.erase(formula.begin());
-	formula = Misc::Trim(formula);
+	formula = StringUtility::Trim(formula);
 
 	value = Compute(formula, removeDependencies);
 }
@@ -54,11 +54,11 @@ std::variant<std::monostate, std::string, double> Formula::Compute(const std::st
 	}
 
 	std::string formula = input.substr(0, paramsStart);
-	formula = Misc::Trim(formula);
+	formula = StringUtility::Trim(formula);
 
 	std::string paramsText = input.substr((paramsStart + 1), input.size());
 	paramsText.pop_back();
-	paramsText = Misc::Trim(paramsText);
+	paramsText = StringUtility::Trim(paramsText);
 
 	std::vector<std::string> params = SplitParameters(paramsText);
 
@@ -137,7 +137,7 @@ std::string Formula::ConsumeFirstParameter(std::string& term)
 	{
 		size_t argumentEnd = term.find_first_of(';');
 		result = argumentEnd == -1 ? term : term.substr(0, argumentEnd);
-		result = Misc::Trim(result);
+		result = StringUtility::Trim(result);
 	}
 
 
@@ -155,7 +155,7 @@ std::string Formula::ConsumeFirstParameter(std::string& term)
 	}
 
 	term = term.substr(paramEnd + 1, term.size());
-	term = Misc::Trim(term);
+	term = StringUtility::Trim(term);
 
 	return result;
 }
@@ -370,7 +370,7 @@ std::variant<std::monostate, std::string, double> Formula::ComputeTrim(const std
 	}
 
 	auto text = std::get<std::string>(value);
-	auto substrings = Misc::Split(text, ' ');
+	auto substrings = StringUtility::Split(text, ' ');
 	std::string result = "";
 	for (int i = 0; i < substrings.size() - 1; i++)
 	{
@@ -439,7 +439,7 @@ bool Formula::IsString(const std::string& input)
 
 bool Formula::IsNumber(const std::string& input, double& output)
 {
-	return Misc::IsNumber(input, output);
+	return StringUtility::IsNumber(input, output);
 }
 
 bool Formula::IsReference(const std::string& input)
@@ -457,8 +457,8 @@ bool Formula::IsRefRange(const std::string& input, std::vector<std::string>& out
 		return false;
 	}
 
-	std::vector<std::string> refs = Misc::Split(input, ':');
-	std::for_each(refs.begin(), refs.end(), [](std::string& ref) { ref = Misc::Trim(ref); });
+	std::vector<std::string> refs = StringUtility::Split(input, ':');
+	std::for_each(refs.begin(), refs.end(), [](std::string& ref) { ref = StringUtility::Trim(ref); });
 	for (const std::string& ref : refs)
 	{
 		if (!IsReference(ref)) { return false; }
@@ -474,10 +474,10 @@ bool Formula::IsRefRange(const std::string& input, std::vector<std::string>& out
 	refs.clear();
 	for (int col = startCol; col <= endCol; col++)
 	{
-		auto colTitle = Misc::GenerateColTitle(col);
+		auto colTitle = StringUtility::GenerateColTitle(col);
 		for (int row = startRow; row <= endRow; row++)
 		{
-			auto rowTitle = Misc::GenerateRowTitle(row);
+			auto rowTitle = StringUtility::GenerateRowTitle(row);
 
 			std::string cellTitle = std::format("{}{}", colTitle, rowTitle);
 			refs.push_back(cellTitle);
@@ -497,8 +497,8 @@ bool Formula::IsRefRange(const std::string& input)
 		return false;
 	}
 
-	std::vector<std::string> refs = Misc::Split(input, ':');
-	std::for_each(refs.begin(), refs.end(), [](std::string& ref) { ref = Misc::Trim(ref); });
+	std::vector<std::string> refs = StringUtility::Split(input, ':');
+	std::for_each(refs.begin(), refs.end(), [](std::string& ref) { ref = StringUtility::Trim(ref); });
 	for (const std::string& ref : refs)
 	{
 		if (!IsReference(ref)) { return false; }

@@ -139,7 +139,7 @@
     <ClCompile Include="Display.cpp" />
     <ClCompile Include="Formula.cpp" />
     <ClCompile Include="FormulaCell.cpp" />
-    <ClCompile Include="Misc.cpp" />
+    <ClCompile Include="StringUtility.cpp" />
     <ClCompile Include="NumericCell.cpp" />
     <ClCompile Include="RowHeader.cpp" />
     <ClCompile Include="Screen.cpp" />
@@ -159,7 +159,7 @@
     <ClInclude Include="Display.h" />
     <ClInclude Include="Formula.h" />
     <ClInclude Include="FormulaCell.h" />
-    <ClInclude Include="Misc.h" />
+    <ClInclude Include="StringUtility.h" />
     <ClInclude Include="NumericCell.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="RowHeader.h" />

@@ -3,7 +3,7 @@
 #include <vector>
 #include <format>
 
-class Misc
+class StringUtility
 {
 public:
 	static std::vector<std::string> Split(const std::string& input, char delimiter);

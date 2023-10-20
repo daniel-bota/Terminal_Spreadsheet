@@ -16,5 +16,5 @@ RowHeader::RowHeader(Sheet* sheet, int index, int width, int height) : RowHeader
 
 std::string RowHeader::ValueToDraw() const
 {
-	return Misc::ValueToDraw(true, true, title, width);
+	return StringUtility::ValueToDraw(true, true, title, width);
 }

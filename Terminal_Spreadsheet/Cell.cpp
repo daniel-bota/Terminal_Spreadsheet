@@ -53,10 +53,10 @@ void Cell::GenerateTitle(const std::string& colTitle, const std::string& rowTitl
 
 std::string Cell::GenerateRowTitle(int index) const
 {
-	return Misc::GenerateRowTitle(index);
+	return StringUtility::GenerateRowTitle(index);
 }
 
 std::string Cell::GenerateColTitle(int index) const
 {
-	return Misc::GenerateColTitle(index);
+	return StringUtility::GenerateColTitle(index);
 }

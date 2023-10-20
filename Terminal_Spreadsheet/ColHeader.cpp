@@ -16,5 +16,5 @@ ColHeader::ColHeader(Sheet* sheet, int index, int width, int height) : ColHeader
 
 std::string ColHeader::ValueToDraw() const
 {
-	return Misc::ValueToDraw(true, true, title, width);
+	return StringUtility::ValueToDraw(true, true, title, width);
 }

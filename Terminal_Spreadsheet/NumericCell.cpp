@@ -22,5 +22,5 @@ std::string NumericCell::ValueString() const
 
 std::string NumericCell::ValueToDraw() const
 {
-    return Misc::ValueToDraw(false, false, ValueString(), width);
+    return StringUtility::ValueToDraw(false, false, ValueString(), width);
 }
